@@ -9,3 +9,4 @@
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Domain/obj/Debug/net9.0/refint/Core.Domain.dll
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Domain/obj/Debug/net9.0/Core.Domain.pdb
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Domain/obj/Debug/net9.0/ref/Core.Domain.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Domain/obj/Debug/net9.0/Core.Domain.sourcelink.json

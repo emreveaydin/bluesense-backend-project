@@ -151,3 +151,4 @@
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Presentation/API/obj/Debug/net9.0/API.pdb
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Presentation/API/obj/Debug/net9.0/API.genruntimeconfig.cache
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Presentation/API/obj/Debug/net9.0/ref/API.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Presentation/API/obj/Debug/net9.0/API.sourcelink.json

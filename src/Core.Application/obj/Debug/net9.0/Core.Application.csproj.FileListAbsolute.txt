@@ -13,3 +13,4 @@
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/refint/Core.Application.dll
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.pdb
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/ref/Core.Application.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.sourcelink.json
