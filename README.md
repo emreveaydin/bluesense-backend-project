@@ -21,10 +21,10 @@ graph TD
         Infrastructure --> Application;
     end
 
-    style C fill:#FFDDC1,stroke:#333,stroke-width:2px
-    style B fill:#C2DFFF,stroke:#333,stroke-width:2px
-    style A fill:#D4EDDA,stroke:#333,stroke-width:2px
-    style D fill:#F8D7DA,stroke:#333,stroke-width:2px
+    style C fill:#FFDDC1,stroke:#333,stroke-width:2px,color:#333
+    style B fill:#C2DFFF,stroke:#333,stroke-width:2px,color:#333
+    style A fill:#D4EDDA,stroke:#333,stroke-width:2px,color:#333
+    style D fill:#F8D7DA,stroke:#333,stroke-width:2px,color:#333
 ```
 
 ### Polyglot Persistence & CQRS
@@ -81,16 +81,16 @@ The structure for `Message` documents stored in the `Messages` collection.
 
 ```mermaid
 graph TD
-    subgraph "MongoDB: `Messages` Collection"
+    subgraph "MongoDB: Messages Collection"
         M[Message Document]
-        M --> Id("`Id` (GUID)")
-        M --> GroupId("`GroupId` (GUID)")
-        M --> SenderId("`SenderId` (GUID)")
-        M --> Content("`Content` (string, text-indexed)")
-        M --> FileUrl("`FileUrl` (string, optional)")
-        M --> IsEdited("`IsEdited` (bool)")
-        M --> IsDeleted("`IsDeleted` (bool)")
-        M --> CreatedAt("`CreatedAt` (DateTime)")
+        M --> Id("Id (GUID)")
+        M --> GroupId("GroupId (GUID)")
+        M --> SenderId("SenderId (GUID)")
+        M --> Content("Content (string, text-indexed)")
+        M --> FileUrl("FileUrl (string, optional)")
+        M --> IsEdited("IsEdited (bool)")
+        M --> IsDeleted("IsDeleted (bool)")
+        M --> CreatedAt("CreatedAt (DateTime)")
     end
 
     style M fill:#90ee90,stroke:#333,stroke-width:2px
