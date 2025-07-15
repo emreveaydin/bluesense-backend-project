@@ -1,25 +1,28 @@
-using System.Linq;
-using Infrastructure.Persistence.Postgres.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Infrastructure.Persistence.Postgres.Context;
+using System.Linq;
 using Microsoft.Extensions.Configuration;
-using System.Reflection;
+using System.IO;
+using System;
 
 namespace API.IntegrationTests;
 
 public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
-    protected override IHost CreateHost(IHostBuilder builder)
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        builder.UseEnvironment("Testing");
+        var solutionDir = FindSolutionDirectory();
+        var projectDir = Path.Combine(solutionDir, "src", "Presentation", "API");
 
-        builder.ConfigureAppConfiguration((context, config) =>
+        builder.UseContentRoot(projectDir);
+        builder.ConfigureAppConfiguration((context, conf) =>
         {
-            var testAssembly = Assembly.GetExecutingAssembly();
-            config.AddJsonFile(Path.Combine(Path.GetDirectoryName(testAssembly.Location)!, "appsettings.Testing.json"));
+            var testConfigPath = Path.Combine(solutionDir, "tests", "API.IntegrationTests", "appsettings.Testing.json");
+            conf.AddJsonFile(testConfigPath);
         });
 
         builder.ConfigureServices(services =>
@@ -31,7 +34,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                 services.Remove(dbContextDescriptor);
             }
 
-            var dbConnectionDescriptor = services.SingleOrDefault(d => 
+            var dbConnectionDescriptor = services.SingleOrDefault(d =>
                 d.ServiceType == typeof(ApplicationDbContext));
             if (dbConnectionDescriptor != null)
             {
@@ -44,6 +47,16 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             });
         });
 
-        return base.CreateHost(builder);
+        builder.UseEnvironment("Testing");
+    }
+
+    private static string FindSolutionDirectory()
+    {
+        var currentDirectory = new DirectoryInfo(AppContext.BaseDirectory);
+        while (currentDirectory != null && !currentDirectory.GetFiles("*.sln").Any())
+        {
+            currentDirectory = currentDirectory.Parent;
+        }
+        return currentDirectory?.FullName ?? throw new DirectoryNotFoundException("Solution directory not found.");
     }
 }
