@@ -1,0 +1,15 @@
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/bin/Debug/net9.0/Core.Application.deps.json
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/bin/Debug/net9.0/Core.Application.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/bin/Debug/net9.0/Core.Application.pdb
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/bin/Debug/net9.0/Core.Domain.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/bin/Debug/net9.0/Core.Domain.pdb
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.csproj.AssemblyReference.cache
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.AssemblyInfoInputs.cache
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.AssemblyInfo.cs
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.csproj.CoreCompileInputs.cache
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.App.01B2A2D7.Up2Date
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/refint/Core.Application.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/Core.Application.pdb
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/src/Core.Application/obj/Debug/net9.0/ref/Core.Application.dll

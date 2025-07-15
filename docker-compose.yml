@@ -1,0 +1,45 @@
+services:
+  # API Service
+  bluesense-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7003:8081" # Map container's port 8081 (HTTPS) to host's port 7003
+      - "7002:8080" # Map container's port 8080 (HTTP) to host's port 7002
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:8081;http://+:8080
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=your_password # Replace with a strong password
+      - ConnectionStrings__PostgresConnection=Server=postgres-db;Port=5432;Database=bluesense_db;User Id=postgres;Password=postgres_password
+      - MongoDbSettings__ConnectionString=mongodb://mongo-db:27017
+    volumes:
+      - ~/.aspnet/https/aspnetapp.pfx:/https/aspnetapp.pfx:ro
+    depends_on:
+      - postgres-db
+      - mongo-db
+
+  # PostgreSQL Database
+  postgres-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=bluesense_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres_password # Should match the connection string password
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # MongoDB Database
+  mongo-db:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  postgres_data:
+  mongo_data: 

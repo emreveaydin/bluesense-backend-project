@@ -1,0 +1,6 @@
+{
+  "API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/emreaydin\/Desktop\/biznis\/bluesense-backend-project\/src\/Presentation\/API",
+  "Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/emreaydin\/Desktop\/biznis\/bluesense-backend-project\/src\/Core.Application",
+  "Core.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/emreaydin\/Desktop\/biznis\/bluesense-backend-project\/src\/Core.Domain",
+  "Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/emreaydin\/Desktop\/biznis\/bluesense-backend-project\/src\/Infrastructure"
+}

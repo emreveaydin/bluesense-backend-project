@@ -1,0 +1,72 @@
+name: Bluesense Backend CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Kodları Checkout Et
+      uses: actions/checkout@v4
+
+    - name: .NET Kurulumu
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Bağımlılıkları Yükle
+      run: dotnet restore
+
+    - name: Projeyi Derle
+      run: dotnet build --configuration Release --no-restore
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Kodları Checkout Et
+      uses: actions/checkout@v4
+      
+    - name: .NET Kurulumu
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Bağımlılıkları Yükle
+      run: dotnet restore
+
+    - name: Testleri Çalıştır
+      run: dotnet test --no-build --verbosity normal
+
+  build-and-push-docker:
+    name: Docker Imajını Oluştur ve Yayınla
+    runs-on: ubuntu-latest
+    needs: test # Sadece testler başarılı olursa çalışır
+    steps:
+      - name: Kodları Checkout Et
+        uses: actions/checkout@v4
+
+      - name: Docker Hub'a Giriş Yap
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker Meta Bilgilerini Ayıkla
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/bluesense-backend
+
+      - name: Docker Imajını Build Et ve Push'la
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }} 
