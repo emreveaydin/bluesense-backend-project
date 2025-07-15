@@ -9,6 +9,7 @@ using System;
 using System.Threading.Tasks;
 using Testcontainers.PostgreSql;
 using Xunit;
+using Microsoft.AspNetCore.TestHost;
 
 namespace API.IntegrationTests;
 
@@ -27,6 +28,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>, IAsyn
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        builder.UseTestServer(options =>
+        {
+            options.AllowSynchronousIO = true;
+        });
+        
         var solutionDir = FindSolutionDirectory();
         builder.UseContentRoot(Path.Combine(solutionDir, "src", "Presentation", "API"));
         builder.ConfigureAppConfiguration((context, conf) =>
@@ -37,7 +43,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>, IAsyn
         
         builder.ConfigureServices(services =>
         {
-            // Remove the original DbContext registration
             var dbContextDescriptor = services.SingleOrDefault(d =>
                 d.ServiceType == typeof(DbContextOptions<ApplicationDbContext>));
             if (dbContextDescriptor != null)
@@ -45,18 +50,21 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>, IAsyn
                 services.Remove(dbContextDescriptor);
             }
 
-            // Add DbContext using the test container's connection string
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(_dbContainer.GetConnectionString());
             });
 
-            // Ensure the database is created and migrations are applied
             using var sp = services.BuildServiceProvider();
             using var scope = sp.CreateScope();
             var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             db.Database.Migrate();
         });
+    }
+
+    protected override void ConfigureClient(HttpClient client)
+    {
+        base.ConfigureClient(client);
     }
 
     public async Task InitializeAsync()

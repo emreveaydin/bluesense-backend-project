@@ -14,10 +14,13 @@ public class AuthControllerTests : IClassFixture<CustomWebApplicationFactory>
 
     public AuthControllerTests(CustomWebApplicationFactory factory)
     {
-        _client = factory.CreateClient();
+        _client = factory.CreateClient(new WebApplicationFactoryClientOptions
+        {
+            AllowAutoRedirect = false
+        });
     }
 
-    [Fact(Skip = "Lokal makinemde bu bağımlılıkla alakalı problemim olduğu için bu kısmı daha sonrasında inceleyeceğim. CI/CD alanımız zaten bu işlevin yerine geçtiği için bu kısmı hayati bulmuyorum. / I will investigate this section later as I have a problem with this dependency on my local machine. I don't find this part vital since our CI/CD area already replaces this function.")]
+    [Fact]
     public async Task Register_ShouldReturnSuccessAndTokens_WhenDataIsValid()
     {
         // Arrange
@@ -31,10 +34,13 @@ public class AuthControllerTests : IClassFixture<CustomWebApplicationFactory>
 
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.OK);
-        
-        var authResponse = await response.Content.ReadFromJsonAsync<AuthResponseDto>();
+
+        await using var responseStream = await response.Content.ReadAsStreamAsync();
+        var authResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<AuthResponseDto>(responseStream,
+            new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
         authResponse.Should().NotBeNull();
-        authResponse.AccessToken.Should().NotBeNullOrEmpty();
+        authResponse!.AccessToken.Should().NotBeNullOrEmpty();
         authResponse.RefreshToken.Should().NotBeNullOrEmpty();
     }
 } 
