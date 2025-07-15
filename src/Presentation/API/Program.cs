@@ -1,3 +1,4 @@
+using API;
 using System.Text;
 using Core.Application.Interfaces;
 using Core.Domain.Contracts;
@@ -19,7 +20,7 @@ using MongoDB.Bson.Serialization.Serializers;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+MongoDbConfigurator.Configure();
 
 builder.Services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
