@@ -364,6 +364,10 @@
               "target": "Package",
               "version": "[17.10.0, )"
             },
+            "Testcontainers.PostgreSql": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
             "xunit": {
               "target": "Package",
               "version": "[2.9.0, )"

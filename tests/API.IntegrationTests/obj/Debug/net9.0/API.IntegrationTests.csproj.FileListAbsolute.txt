@@ -471,3 +471,10 @@
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/obj/Debug/net9.0/staticwebassets.build.json.cache
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/obj/Debug/net9.0/staticwebassets.development.json
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/BouncyCastle.Cryptography.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/Docker.DotNet.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/Docker.DotNet.X509.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/ICSharpCode.SharpZipLib.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/Renci.SshNet.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/Testcontainers.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/API.IntegrationTests/bin/Debug/net9.0/Testcontainers.PostgreSql.dll
