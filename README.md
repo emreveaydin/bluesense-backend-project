@@ -198,7 +198,7 @@ This automated workflow ensures that every change is validated and a deployable 
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/emreveaydin/bs-backend-project.git
+    git clone https://github.com/emreveaydin/bluesense-backend-project.git
     cd bluesense-backend-project
     ```
 
