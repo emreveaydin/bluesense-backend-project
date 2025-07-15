@@ -120,3 +120,4 @@
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/Application.UnitTests/obj/Debug/net9.0/Application.UnitTests.pdb
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/Application.UnitTests/obj/Debug/net9.0/Application.UnitTests.genruntimeconfig.cache
 /Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/Application.UnitTests/obj/Debug/net9.0/ref/Application.UnitTests.dll
+/Users/emreaydin/Desktop/biznis/bluesense-backend-project/tests/Application.UnitTests/obj/Debug/net9.0/Application.UnitTests.sourcelink.json
